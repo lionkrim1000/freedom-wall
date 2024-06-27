@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: gray;
+    }
+    .top-block {
+        background-color: #F0F8FF;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    .top-block p {
+        font-family: cursive;
+    }
+    .container {
+        text-align: center;
+        background-color: white;
+        padding: 20px;
+    }
+    .container p {
+        font-size: 16px;
+        color: red;
+        line-height: 1.5;
+        font-family: cursive;
+    }
+    .container h1 {
+        font-weight: bolder;
+    }
+    .container1 {
+        display: flex;
+        justify-content: space-around;
+        padding: 20px;
+    }
+    .category {
+        text-align: center;
+        flex: 1;
+        padding: 20px; /* Added padding */
+    }
+    .box {
+        background-color: #f0f0f0;
+        padding: 10px;
+        border: 1px solid #ccc;
+        margin-top: 10px;
+    }
+    .view-more-btn {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 10px 24px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+    .view-more-btn:hover {
+        background-color: #45a049;
+    }
+    .more-btn {
+      background-color: #f0f0f0;
+        border: none;
+        color: black;
+        padding: 10px 24px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-top: 10px;
+        cursor: pointer;
+        text-align: right;
+    }
+</style>
+</head>
+<body>
+<div class="top-block">
+  <h1>Welcome</h1>
+  <p>This is the place for the untold stories</p>
+  <%= link_to '!', new_admin_session_path, class: 'more-btn' %> 
+</div>
+<div class="container">
+    <h1> Freedom Wall </h1>
+    <p>The internet is like one big bathroom wall with a lot of <br>
+    people who anonymously can say really mean things. It's fine, <br>
+    I'll think in freedom of speech and I think people <br>
+    should think what they want, but I don't care to hear it.
+    </p>
+</div>
+<div class="container1">
+    <div class="category">
+        <h1>Casual</h1>
+        <div class="box">
+            <% if @random_casual_post %>
+                <p><strong><%= @random_casual_post.name %> says:</strong> <%= @random_casual_post.content %></p>
+                <p>Posted on: <%= @random_casual_post.date_posted.strftime("%B %d, %Y %H:%M") %></p>
+            <% else %>
+                <p>No casual posts available.</p>
+            <% end %>
+        </div>
+        <%= link_to "View More", casual_posts_path, class: "view-more-btn" %>
+    </div>
+
+    <div class="category">
+        <h1>Confession</h1>
+        <div class="box">
+            <% if @random_confession %>
+                <p><strong><%= @random_confession.name %> says:</strong> <%= @random_confession.content %></p>
+                <p>Posted on: <%= @random_confession.date_posted.strftime("%B %d, %Y %H:%M") %></p>
+            <% else %>
+                <p>No confessions available.</p>
+            <% end %>
+        </div>
+        <%= link_to "View More", confessions_path, class: "view-more-btn" %>
+    </div>
+
+    <div class="category">
+        <h1>Rants</h1>
+        <div class="box">
+            <% if @random_rant %>
+                <p><strong><%= @random_rant.name %> says:</strong> <%= @random_rant.content %></p>
+                <p>Posted on: <%= @random_rant.date_posted.strftime("%B %d, %Y %H:%M") %></p>
+            <% else %>
+                <p>No rants available.</p>
+            <% end %>
+        </div>
+        <%= link_to "View More", rants_path, class: "view-more-btn" %>
+    </div>
+</div>
+
+<%= link_to "Create a post", category_selection_path, class: 'view-more-btn' %>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create a New Post</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    .form-container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    .field {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+    }
+
+    .name-input,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    .submit-btn {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .submit-btn:hover {
+      background-color: #0056b3;
+    }
+
+    .cancel-btn {
+      background-color: #dc3545;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+    }
+
+    .cancel-btn:hover {
+      background-color: #c82333;
+    }
+
+    .btn-container {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .btn-container a {
+      margin-left: 10px;
+    }
+
+    .notes {
+      font-style: italic;
+      color: #666;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Rants</h1>
+  </header>
+
+  <div class="form-container">
+    <h2>Create a New Post</h2>
+
+    <p class="notes">If you want to stay anonymous, simply leave your name blank.</p>
+
+    <%= form_with model: @rant, url: rants_path, method: :post do |form| %>
+      <div class="field">
+        <%= form.label :name %>
+        <%= form.text_field :name, class: "name-input" %>
+      </div>
+
+      <div class="field">
+        <%= form.label :content %>
+        <%= form.text_area :content %>
+      </div>
+
+      <div class="btn-container">
+        <%= form.submit "Create Post", class: "submit-btn" %>
+        <%= link_to "Cancel", root_path, class: "cancel-btn" %>
+      </div>
+    <% end %>
+  </div>
+</body>
+</html>

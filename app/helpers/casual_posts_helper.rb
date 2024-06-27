@@ -1,0 +1,2 @@
+module CasualPostsHelper
+end

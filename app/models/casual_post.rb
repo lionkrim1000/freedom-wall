@@ -1,0 +1,2 @@
+class CasualPost < ApplicationRecord
+end

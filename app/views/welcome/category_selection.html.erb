@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Category Selection</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column; /* Added */
+      align-items: center;
+      height: 100vh;
+    }
+
+    .category-container {
+      text-align: center;
+      
+    }
+
+    .category-btn {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .category-btn:hover {
+      background-color: #0056b3;
+    }
+
+    .cancel-btn-container {
+      margin-top: 20px; 
+    }
+
+    .cancel-btn {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 20px;
+      background-color: green;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+  <div class="category-container">
+    <h2>Select Category</h2>
+
+    <div>
+      <%= link_to "Rants", new_rant_path, class: "category-btn" %>
+    </div>
+
+    <div>
+      <%= link_to "Confessions", new_confession_path, class: "category-btn" %>
+    </div>
+
+    <div>
+      <%= link_to "Casual Posts", new_casual_post_path, class: "category-btn" %>
+    </div>
+  </div>
+  
+  <div class="cancel-btn-container">
+    <%= link_to "Cancel ", root_path, class: "cancel-btn" %>
+  </div>
+</body>
+</html>

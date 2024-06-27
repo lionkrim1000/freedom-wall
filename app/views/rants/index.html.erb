@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rant Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    h1 {
+      color: #333;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .rant-container {
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      border-radius: 8px;
+      width: 80%;
+      max-width: 800px;
+      margin-bottom: 20px;
+    }
+
+    .rant {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 15px;
+      background-color: #fafafa;
+      transition: box-shadow 0.3s;
+    }
+
+    .rant:hover {
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .rant strong {
+      color: #555;
+    }
+
+    .rant p {
+      margin: 5px 0;
+    }
+
+    .rant-date {
+      color: #888;
+      font-size: 0.9em;
+    }
+
+    .home-button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 10px 0;
+      cursor: pointer;
+      border-radius: 5px;
+      border: none;
+      transition: background-color 0.3s;
+    }
+
+    .home-button:hover {
+      background-color: #45a049;
+    }
+
+    .home-link {
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <a href="<%= root_path %>" class="home-link"><button class="home-button">Home</button></a>
+  <div class="rant-container">
+    <h1>All Rants</h1>
+    <% @rants.each do |rant| %>
+      <div class="rant">
+        <p><strong><%= rant.name %> says:</strong> <%= rant.content %></p>
+        <p class="rant-date">Posted on: <%= rant.date_posted.strftime("%B %d, %Y %H:%M") %></p>
+      </div>
+    <% end %>
+  </div>
+</body>
+</html>
